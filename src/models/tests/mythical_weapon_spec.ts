@@ -11,4 +11,14 @@ describe("Book Model", () => {
         const result = await store.index()
         expect(result).toEqual([]);
       });  
+
+    // it('show method should return the correct row', async () => {
+    //   const result = await store.show("1");
+    //   expect(result).toEqual({
+    //     id: "1",
+    //     name: 'NameName',
+    //     type: 'TypeType',
+    //     weight: 50,
+    //   });  
+    // });  
 });    
