@@ -8,9 +8,11 @@ class CustomProcessor extends DisplayProcessor {
 }
 
 jasmine.getEnv().clearReporters();
+
+//@ts-ignore
 jasmine.getEnv().addReporter(new SpecReporter({
     spec: {
-        displayStacktrace: StacktraceOption.pretty
+        displayStacktrace: StacktraceOption.PRETTY
     },
     customProcessors: [CustomProcessor],
 }));
