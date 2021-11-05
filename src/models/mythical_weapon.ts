@@ -19,5 +19,16 @@ export class MythicalWeaponStore {
             throw Error(`Cannot get weapons ${err}`)
         }        
     }
-
+    async show(id: string): Promise<Weapon> {
+        try {
+            const sql = 'SELECT * FROM mythical_weapons WHERE id=($1)'
+            const conn = await Client.connect()
+            const result = await conn.query(sql, [id])
+            conn.release()
+    
+            return result.rows[0]
+        } catch (err) {
+            throw new Error(`Could not get weapon ${id}. Error: ${err}`)
+        }
+    }
 }

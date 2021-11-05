@@ -7,7 +7,7 @@
     "start": "node src/server.ts",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess 'node ./dist/server.js'",
     "test": "ENV=test db-migrate --env test up && jasmine-ts && db-migrate db:drop test",
-    "testtest": "cross-env ENV=testtest db-migrate --env testtest up && jasmine-ts && cross-env ENV=testtest db-migrate --env testtest down && cross-env ENV=testtest db-migrate --env testtest down && db-migrate db:drop testtest",
+    "testtest": "cross-env ENV=testtest db-migrate --env testtest up && jasmine-ts && db-migrate --env testtest reset",
     "upup": "cross-env ENV=testtest db-migrate --env testtest up",
     "downdown_migrate": "cross-env ENV=testtest db-migrate --env testtest down",
     "downdown": "db-migrate db:drop testtest",
