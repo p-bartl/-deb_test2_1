@@ -15,10 +15,10 @@ describe("Book Model", () => {
     it('show method should return the correct row', async () => {
       const result = await store.show("1");
       expect(result).toEqual({
-        id: 1,
         name: 'NameName',
         type: 'TypeType',
         weight: 50,
+        id: 1,
       });  
       
     });

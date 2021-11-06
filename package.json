@@ -5,9 +5,10 @@
   "main": "server.ts",
   "scripts": {
     "start": "node src/server.ts",
+    "start2": "nodemon src/server.ts",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess 'node ./dist/server.js'",
     "test": "ENV=test db-migrate --env test up && jasmine-ts && db-migrate db:drop test",
-    "testtest": "cross-env ENV=testtest db-migrate --env testtest up && jasmine-ts && db-migrate --env testtest reset",
+    "testtest": "cross-env ENV=testtest db-migrate --env testtest up && jasmine-ts && cross-env ENV=testtest db-migrate --env testtest down && cross-env ENV=testtest db-migrate --env testtest down && db-migrate --env testtest reset",
     "upupup": "cross-env ENV=testtest db-migrate --env testtest up",
     "downdowndown": "db-migrate --env testtest reset",
     "upup": "cross-env ENV=testtest db-migrate --env testtest up",
@@ -27,6 +28,7 @@
     "db-migrate-pg": "^1.2.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "nodemon": "^2.0.14",
     "pg": "^8.7.1",
     "typescript": "^4.1.3"
   },
