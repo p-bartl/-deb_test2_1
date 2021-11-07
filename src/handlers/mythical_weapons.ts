@@ -19,7 +19,7 @@ const show = async (req: Request, res: Response) => {
 
 const mythical_weapon_routes = (app: express.Application) => {
   app.get('/products', index)
-  app.get('/products/{:id}', show)
+  app.get('/products/:id', show)
 }
 
 export default mythical_weapon_routes
