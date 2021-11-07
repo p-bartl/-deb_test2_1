@@ -23,6 +23,7 @@ export class MythicalWeaponStore {
         try {
             const sql = 'SELECT * FROM mythical_weapons WHERE id=($1)'
             const conn = await Client.connect()
+            console.log(conn);
             const result = await conn.query(sql, [id])
             conn.release()
     

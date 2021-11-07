@@ -5,10 +5,11 @@
   "main": "server.ts",
   "scripts": {
     "start": "node src/server.ts",
-    "start2": "nodemon src/server.ts",
+    "start2": "cross-env ENV=testtest nodemon src/server.ts",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess 'node ./dist/server.js'",
     "test": "ENV=test db-migrate --env test up && jasmine-ts && db-migrate db:drop test",
     "testtest": "cross-env ENV=testtest db-migrate --env testtest up && jasmine-ts && cross-env ENV=testtest db-migrate --env testtest down && cross-env ENV=testtest db-migrate --env testtest down && db-migrate --env testtest reset",
+    "testtest2": "set ENV=testtest db-migrate --env testtest up && jasmine-ts && cross-env ENV=testtest db-migrate --env testtest down && cross-env ENV=testtest db-migrate --env testtest down && db-migrate --env testtest reset",
     "upupup": "cross-env ENV=testtest db-migrate --env testtest up",
     "downdowndown": "db-migrate --env testtest reset",
     "upup": "cross-env ENV=testtest db-migrate --env testtest up",
