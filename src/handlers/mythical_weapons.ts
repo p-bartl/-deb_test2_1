@@ -9,7 +9,8 @@ const index = async (_req: Request, res: Response) => {
 }
 
 const show = async (req: Request, res: Response) => {
-    const weapons = await store.show(req.body.id)
+    //const weapons = await store.show(req.body.id)
+    const weapons = await store.show(req.params.id)
     res.json(weapons)
  }
 
