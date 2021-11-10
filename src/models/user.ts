@@ -10,6 +10,8 @@ export type User = {
     password_digest: string;
 }
 
+const pepper = process.env.BCRYPT_PASSWORD;
+
 export class UserStore {
     async create(u: User): Promise<User> {
         try {
