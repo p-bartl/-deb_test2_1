@@ -12,9 +12,11 @@
     "testtest2": "set ENV=testtest && db-migrate --env testtest up && jasmine-ts && db-migrate --env testtest reset",
     "upupup": "cross-env ENV=testtest db-migrate --env testtest up",
     "downdowndown": "db-migrate --env testtest reset",
+    "downdowndown2": "cross-env ENV=testtest db-migrate --env testtest reset",
     "upup": "cross-env ENV=testtest db-migrate --env testtest up",
     "downdown_migrate": "cross-env ENV=testtest db-migrate --env testtest down",
     "downdown": "db-migrate db:drop testtest",
+    "downdown2": "cross-env ENV=testtest db-migrate db:drop testtest",
     "tsc": "tsc"
   },
   "author": "Udacity",
@@ -30,6 +32,7 @@
     "db-migrate-pg": "^1.2.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.14",
     "pg": "^8.7.1",
     "typescript": "^4.1.3"

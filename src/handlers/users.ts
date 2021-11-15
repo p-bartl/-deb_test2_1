@@ -17,8 +17,10 @@ const store = new UserStore()
 const create = async (_req: Request, res: Response) => {
     try {
         const user: User = {
+            id: _req.body.username,
             username: _req.body.username,
-            password: _req.body.password
+            password: _req.body.password,
+            password_digest: _req.body.username,
         }
 
         const newUser = await store.create(user)
@@ -29,9 +31,27 @@ const create = async (_req: Request, res: Response) => {
     }
 } 
 
+const authenticate = async (_req: Request, res: Response) => {
+    try {    
+    const user: User = {
+        id: _req.body.username,
+        username: _req.body.username,
+        password: _req.body.password,
+        password_digest: _req.body.username,
+    }
+
+        const newUser = await store.authenticate(user.username, user.password)
+        res.json(newUser)
+    } catch(err) {
+        res.status(400)
+        res.json(err)
+    }
+}
+
 
 const user_routes = (app: express.Application) => {
   app.post('/users', create)
+  app.post('/users/authenticate', authenticate)
   //app.post('/users/authenticate', authenticate)
 }
 

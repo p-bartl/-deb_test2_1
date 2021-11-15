@@ -7,10 +7,12 @@ import bcrypt from 'bcrypt';
 export type User = {
     id: number;
     username: string;
+    password: string;
     password_digest: string;
 }
 
 const pepper = process.env.BCRYPT_PASSWORD;
+const saltRounds = process.env.SALT_ROUNDS;
 
 export class UserStore {
     async create(u: User): Promise<User> {
@@ -20,7 +22,8 @@ export class UserStore {
           const sql = 'INSERT INTO users (username, password_digest) VALUES($1, $2) RETURNING *'
     
           const hash = bcrypt.hashSync(
-            u.password + pepper, 
+            u.password + pepper,
+            // @ts-ignore 
             parseInt(saltRounds)
           );
     
