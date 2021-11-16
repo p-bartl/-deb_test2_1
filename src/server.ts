@@ -11,6 +11,7 @@ import user2_routes from './handlers/users2'
 import mythical_weapon_routes2 from './handlers/mythical_weapons2'
 import orderRoutes from './handlers/orders'
 import productRoutes from './handlers/products'
+import dashboardRoutes from './handlers/dashboards'
 
 
 const app: express.Application = express()
@@ -29,6 +30,7 @@ user2_routes(app)
 mythical_weapon_routes2(app)
 orderRoutes(app)
 productRoutes(app)
+dashboardRoutes(app)
 
 app.listen(3000, function () {
     console.log(`starting app on: ${address}`)
