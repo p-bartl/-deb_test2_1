@@ -6,7 +6,13 @@ const index = async (_req, res) => {
     const weapons = await store.index();
     res.json(weapons);
 };
+const show = async (req, res) => {
+    //const weapons = await store.show(req.body.id)
+    const weapons = await store.show(req.params.id);
+    res.json(weapons);
+};
 const mythical_weapon_routes = (app) => {
-    app.get('/products', index);
+    app.get('/products2', index);
+    app.get('/products2/:id', show);
 };
 exports.default = mythical_weapon_routes;
