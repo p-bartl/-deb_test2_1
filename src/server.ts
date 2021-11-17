@@ -4,7 +4,8 @@ import { Request, Response, Application } from 'express';
 import express = require('express');
 
 import bodyParser from 'body-parser'
-import mythical_weapon_routes from './handlers/mythical_weapons'
+
+//import mythical_weapon_routes from './handlers/mythical_weapons'
 
 // //import articles_routes from './handlers/article'
 // //import user_routes from './handlers/users'
@@ -29,7 +30,8 @@ app.get('/', function (req: Request, res: Response) {
     res.send('Hello World!')
 })
 
-mythical_weapon_routes(app)
+//mythical_weapon_routes(app)
+
 // //articles_routes(app)
 // //user_routes(app)
 // user2_routes(app)

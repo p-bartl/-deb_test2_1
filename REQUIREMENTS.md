@@ -12,7 +12,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - [OPTIONAL] Products by category (args: product category)
 
 ### Products SOLUTION
-#### CREATE_REQUEST (http://localhost:3000/products/)
+#### CREATE_REQUEST (POST http://localhost:3000/products/)
 
 ```
 {
@@ -32,7 +32,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 }
 ```
 
-#### GET_SPECIFIED_PRODUCT_REQUEST (http://localhost:3000/products/:id)
+#### GET_SPECIFIED_PRODUCT_REQUEST (GET http://localhost:3000/products/:id)
 ```
 <no body>
 ```
@@ -48,7 +48,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 }
 ```
 
-#### GET_ALL_REQUEST (http://localhost:3000/products/all)
+#### GET_ALL_REQUEST (GET http://localhost:3000/products/all)
 ```
 <no body>
 ```
@@ -70,7 +70,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Create N[token required]
 
 ### Users SOLUTION
-#### CREATE_REQUEST (http://localhost:3000/users/)
+#### CREATE_REQUEST (POST http://localhost:3000/users/)
 ```
 {
     "first_name": <firstname (string)>,
@@ -87,7 +87,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 }
 ```
 
-#### GET_ALL_REQUEST (http://localhost:3000/users/all)
+#### GET_ALL_REQUEST (GET http://localhost:3000/users/all)
 
 ```
 <no body>
@@ -102,7 +102,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 }
 ```
 
-#### AUTHENTICATE_REQUEST (http://localhost:3000/users/auth)
+#### AUTHENTICATE_REQUEST (POST http://localhost:3000/users/auth)
 
 ```
 {
@@ -124,7 +124,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
 ### Orders SOLUTION
-#### CREATE_ORDER_REQUEST (http://localhost:3000/orders)
+#### CREATE_ORDER_REQUEST (POST http://localhost:3000/orders)
 ```
 <use token>
 ```
@@ -146,7 +146,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 }
 ```
 
-#### CREATE_PRODUCT_WITHIN_ORDER_REQUEST (http://localhost:3000/orders/:id/products)
+#### CREATE_PRODUCT_WITHIN_ORDER_REQUEST (POST http://localhost:3000/orders/:id/products)
 ```
 <use token>
 ```
@@ -169,7 +169,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 }
 ```
 
-#### GET_SPECIFIED_ORDER_REQUEST (http://localhost:3000/orders/:id)
+#### GET_SPECIFIED_ORDER_REQUEST (GET http://localhost:3000/orders/:id)
 ```
 <no body>
 ```
@@ -184,7 +184,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 }
 ```
 
-#### GET_ALL_REQUEST (http://localhost:3000/orders/)
+#### GET_ALL_REQUEST (GET http://localhost:3000/orders/)
 ```
 <no body, use token>
 ```
@@ -206,7 +206,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - price
 - [OPTIONAL] category
 
-### Product Data_Schema
+### Product SOLUTION
 Table: products9 (id:integer, name:varchar(50), price:integer, category:text)
 
 ### User REQUIREMENT
@@ -215,7 +215,7 @@ Table: products9 (id:integer, name:varchar(50), price:integer, category:text)
 - lastName
 - password
 
-### User Data_Schema
+### User SOLUTION
 Table: users9 (id:integer, first_name:varchar(100), last_name:varchar(100), password_digest:varchar(100))
 
 
@@ -226,10 +226,10 @@ Table: users9 (id:integer, first_name:varchar(100), last_name:varchar(100), pass
 - user_id
 - status of order (active or complete)
 
-### Orders Data_Schema
+### Orders SOLUTION
 Table: orders9 (id:integer, user_id:bigint[foreign key to users9 table], status:varchar)
 
-### Order_Products Data_Schema
+### Order_Products SOLUTION
 Table: order_products9 (id:integer, quantity:integer, order_id:bigint[foreign key to orders9 table], product_id:bigint[foreign key to products9 table])
 
 
