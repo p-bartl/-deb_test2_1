@@ -8,78 +8,82 @@ const supertest_1 = __importDefault(require("supertest"));
 const server_1 = __importDefault(require("../../server"));
 const request = (0, supertest_1.default)(server_1.default);
 const store = new product9_1.ProductsStore9();
-describe('Product Model', () => {
+describe('Model file: Product', () => {
+    // Create a specified product
     beforeAll(async () => {
         await store.create({
-            name: 'spoon',
+            name: 'knife',
             price: 10,
-            category: 'kitchen'
+            category: 'kitchen_arcticles'
         });
     });
-    it('should have index method', () => {
-        expect(store.index).toBeDefined();
+    describe('Do the test methods exist?', () => {
+        it('should have: index method', () => {
+            expect(store.index).toBeDefined();
+        });
+        it('should have: show method', () => {
+            expect(store.show).toBeDefined();
+        });
+        it('should have: create method', () => {
+            expect(store.create).toBeDefined();
+        });
     });
-    it('should have show method', () => {
-        expect(store.show).toBeDefined();
-    });
-    it('should have create method', () => {
-        expect(store.create).toBeDefined();
-    });
-    describe('Test Methods', () => {
-        it('create method should add one product', async () => {
+    describe('Does the product model return correct values?', () => {
+        it('create method should return: product', async () => {
             const result = await store.create({
-                name: 'spoon',
+                name: 'knife',
                 price: 10,
-                category: 'kitchen'
+                category: 'kitchen_arcticles'
             });
             expect(result).toEqual(jasmine.objectContaining({
-                name: 'spoon',
+                name: 'knife',
                 price: 10,
-                category: 'kitchen'
+                category: 'kitchen_arcticles'
             }));
         });
-        it('index method should return list', async () => {
+        it('index method should return: products', async () => {
             const result = await store.index();
             expect(result[0]).toEqual(jasmine.objectContaining({
-                category: 'kitchen'
+                category: 'kitchen_arcticles'
             }));
         });
-        it('Show method should return widget when called with ID', async () => {
+        it('show method should return: specified product', async () => {
             const result = await store.show('1');
             expect(result).toEqual(jasmine.objectContaining({
-                category: 'kitchen'
+                category: 'kitchen_arcticles'
             }));
         });
     });
-    describe('Products Test Endpoints', () => {
+    describe('Does the product model return correct values when requested via endpoint?', () => {
+        // Create a specified product
         beforeAll(async () => {
             await store.create({
-                name: 'apple watch',
+                name: 'ipad',
                 price: 350,
-                category: 'electronics.'
+                category: 'electronic_articles'
             });
         });
-        it('Check if server runs, should return 200 status', async () => {
+        it('server should return: 200 status', async () => {
             const response = await request.get('/');
             expect(response.status).toBe(200);
         });
-        it('Test Index should return array of products', async () => {
+        it('index method should return: products', async () => {
             const response = await request
                 .get('/products/all');
             expect(response.status).toBe(200);
         });
-        it('Test Index should return array of products', async () => {
+        it('show method should return: specified product', async () => {
             const response = await request
                 .get('/products/1');
             expect(response.status).toBe(200);
         });
-        it('Test Create should return created Product', async () => {
+        it('create method should return: product', async () => {
             const response = await request
                 .post('/products')
                 .send({
-                name: 'spoon',
-                price: 1,
-                category: 'kitchenware.'
+                name: 'knife',
+                price: 10,
+                category: 'kitchen_arcticles'
             });
             expect(response.status).toBe(200);
         });
