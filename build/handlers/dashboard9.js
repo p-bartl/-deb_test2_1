@@ -12,18 +12,22 @@ const dashboard_routes9 = (app) => {
     app.get('/five-most-popular-product', fiveMostPopularProduct);
 };
 const dashboard = new dashboard9_1.DashboardQueries9();
+//Products by category
 const productByCategory = async (_req, res) => {
     const products = await dashboard.productByCategory(_req.body.category);
     res.json(products);
 };
+//All Orders by user
 const orderByUserId = async (_req, res) => {
     const orders = await dashboard.orderByUserId(_req.body.user_id);
     res.json(orders);
 };
+//Orders with status 'active' by user
 const completedOrderByUserId = async (_req, res) => {
     const orders = await dashboard.completedOrderByUserId(_req.body.user_id);
     res.json(orders);
 };
+//Top 5 most popular products
 const fiveMostPopularProduct = async (_req, res) => {
     const products = await dashboard.fiveMostPopularProduct();
     res.json(products);

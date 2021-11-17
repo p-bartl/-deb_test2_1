@@ -3,14 +3,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const user9_1 = require("../models/user9");
 var jwt = require('jsonwebtoken');
 const user_data = new user9_1.UserHub9();
+// returns all users
 const index = async (req, res) => {
     const users = await user_data.index();
     res.json(users);
 };
+// returns a specified user
 const show = async (req, res) => {
     const user = await user_data.show(req.params.id);
     res.json(user);
 };
+// create a new user
 const create = async (req, res) => {
     const user = {
         first_name: req.body.first_name,
@@ -20,6 +23,7 @@ const create = async (req, res) => {
     const new_user = await user_data.create(user);
     res.json(new_user);
 };
+// autheticate an existing user
 const auth = async (req, res) => {
     const user = {
         first_name: req.body.first_name,

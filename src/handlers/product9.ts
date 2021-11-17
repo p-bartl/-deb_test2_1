@@ -3,11 +3,13 @@ import {Product9,ProductsStore9} from '../models/product9'
 
 const store = new ProductsStore9()
 
+// returns all products
 const index = async(_req:Request,res:Response) =>{
     const products = await store.index()
     res.json(products)
 }
 
+// returns a specified product
 const show = async(req:Request,res:Response) =>{
     try{
         const getProduct = await store.show(req.params.id)
@@ -15,10 +17,10 @@ const show = async(req:Request,res:Response) =>{
     }catch(err){
         res.status(400)
         res.json(err)
-    }
-    
+    } 
 }
 
+// create a new products
 const create = async(req:Request,res:Response)=>{
     const product:Product9 = {
         name:req.body.name,
@@ -33,9 +35,7 @@ const create = async(req:Request,res:Response)=>{
         res.status(400)
         res.json(err)
     }
-   
 }
-
 
 const product_routes9 = (app:express.Application) =>{
     app.get('/products/all',index)

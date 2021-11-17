@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DashboardQueries9 = void 0;
 const database_1 = __importDefault(require("../database"));
 class DashboardQueries9 {
+    //Products by category
     async productByCategory(category) {
         try {
             //@ts-ignore
@@ -16,9 +17,10 @@ class DashboardQueries9 {
             return result.rows;
         }
         catch (err) {
-            throw new Error(`unable to get products by category ${category}. Error ${err}`);
+            throw new Error(`Could not execute SQL command for category name ${category}. Error ${err}`);
         }
     }
+    //All Orders by user
     async orderByUserId(userId) {
         try {
             //@ts-ignore
@@ -29,9 +31,10 @@ class DashboardQueries9 {
             return result.rows;
         }
         catch (err) {
-            throw new Error(`unable to get orders by user id ${userId}`);
+            throw new Error(`Could not execute SQL command for user id ${userId}`);
         }
     }
+    //Orders with status 'active' by user
     async completedOrderByUserId(userId) {
         try {
             // @ts-ignore
@@ -42,9 +45,10 @@ class DashboardQueries9 {
             return result.rows;
         }
         catch (err) {
-            throw new Error(`unable get completed orders by userID ${userId}: ${err}`);
+            throw new Error(`Could not execute SQL command for user id ${userId}: ${err}`);
         }
     }
+    //Top 5 most popular products
     async fiveMostPopularProduct() {
         try {
             // @ts-ignore
@@ -55,7 +59,7 @@ class DashboardQueries9 {
             return result.rows;
         }
         catch (err) {
-            throw new Error(`unable get five most popular products: ${err}`);
+            throw new Error(`Could not execute SQL command: ${err}`);
         }
     }
 }

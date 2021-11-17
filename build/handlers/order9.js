@@ -6,14 +6,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const order9_1 = require("../models/order9");
 const verifyAuthToken9_1 = __importDefault(require("./verifyAuthToken9"));
 const store = new order9_1.OrderStore9();
+// returns all orders
 const index = async (_req, res) => {
     const orders = await store.index();
     res.json(orders);
 };
+// returns a specified order
 const show = async (req, res) => {
     const order = await store.show(req.params.id);
     res.json(order);
 };
+// create a new order
 const create = async (req, res) => {
     const order = {
         user_id: req.body.user_id,
@@ -28,6 +31,7 @@ const create = async (req, res) => {
         res.json(err);
     }
 };
+// create a new product within an order (product itself must already exist)
 const addOrder = async (_req, res) => {
     const op = {
         order_id: parseInt(_req.params.id),

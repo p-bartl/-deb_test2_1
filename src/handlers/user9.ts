@@ -7,16 +7,19 @@ import verifyAuthToken9 from './verifyAuthToken9'
 
 const user_data = new UserHub9()
 
+// returns all users
 const index = async(req:Request,res:Response)=>{
     const users = await user_data.index()
     res.json(users)
 }
 
+// returns a specified user
 const show = async(req:Request,res:Response)=>{
     const user = await user_data.show(req.params.id)
     res.json(user)
 }
 
+// create a new user
 const create = async(req:Request,res:Response)=>{
     const user = {
         first_name:req.body.first_name,
@@ -25,10 +28,9 @@ const create = async(req:Request,res:Response)=>{
     }
     const new_user = await user_data.create(user)
      res.json(new_user)
-   
-   
 }
 
+// autheticate an existing user
 const auth = async(req:Request,res:Response)=>{
     const user = {
         first_name:req.body.first_name,
@@ -38,8 +40,7 @@ const auth = async(req:Request,res:Response)=>{
     const authUser = await user_data.authenticate(user.first_name,user.password)
     //@ts-ignore
     var token = jwt.sign({user:authUser},process.env.TOKEN_SECRET)
-    res.json({'token':token})
-       
+    res.json({'token':token})     
 }
    
 

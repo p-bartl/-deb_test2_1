@@ -87,7 +87,7 @@ yarn downdowndown2
 
 - database port: 5432 (default)
 - backend: Please refer to the SOLUTION-Sections within in the REQUIREMENTS.md file
-- All relevant models/services/handlers/spec file names end with the number '9'
+- All relevant models/services/handlers/spec file names and database table names end with the number '9'
 
 
 

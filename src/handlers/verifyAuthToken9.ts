@@ -2,6 +2,8 @@
 var jwt = require('jsonwebtoken');
 import express, {request, Request,Response} from 'express'
 
+// Token verification method
+
 //@ts-ignore
 const verifyAuthToken9 = (req: Request, res: Response, next) => {
     try {
@@ -26,6 +28,5 @@ const verifyAuthToken9 = (req: Request, res: Response, next) => {
         return
     }
 }
-
 
 export default verifyAuthToken9

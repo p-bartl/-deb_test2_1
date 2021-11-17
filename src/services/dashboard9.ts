@@ -4,6 +4,7 @@ import {Order9} from '../models/order9'
 
 export class DashboardQueries9{
 
+    //Products by category
     async productByCategory(category:string):Promise<Product9[]>{
         try{
             //@ts-ignore
@@ -14,10 +15,11 @@ export class DashboardQueries9{
 
             return result.rows
         }catch(err){
-            throw new Error(`unable to get products by category ${category}. Error ${err}`)
+            throw new Error(`Could not execute SQL command for category name ${category}. Error ${err}`)
         }
     }
 
+    //All Orders by user
     async orderByUserId(userId:number):Promise<Order9[]>{
         try{
             //@ts-ignore
@@ -27,10 +29,11 @@ export class DashboardQueries9{
             conn.release()
             return result.rows
         }catch(err){
-            throw new Error(`unable to get orders by user id ${userId}`)
+            throw new Error(`Could not execute SQL command for user id ${userId}`)
         }
     }
 
+    //Orders with status 'active' by user
     async completedOrderByUserId(userId:number):Promise<Order9[]>{
         try{
             // @ts-ignore
@@ -43,10 +46,11 @@ export class DashboardQueries9{
             return result.rows
         }
         catch(err){
-            throw new Error(`unable get completed orders by userID ${userId}: ${err}`)
+            throw new Error(`Could not execute SQL command for user id ${userId}: ${err}`)
         }
     }
 
+    //Top 5 most popular products
     async fiveMostPopularProduct(): Promise<Product9[]>{
         try{
             // @ts-ignore
@@ -58,7 +62,7 @@ export class DashboardQueries9{
             return result.rows
         }
         catch(err){
-            throw new Error(`unable get five most popular products: ${err}`)
+            throw new Error(`Could not execute SQL command: ${err}`)
         }
     }
 }

@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductsStore9 = void 0;
 const database_1 = __importDefault(require("../database"));
 class ProductsStore9 {
+    // returns all products
     async index() {
         try {
             //@ts-ignore
@@ -16,9 +17,10 @@ class ProductsStore9 {
             return result.rows;
         }
         catch (err) {
-            throw new Error(`Unable to fetch all the products list. ${err}`);
+            throw new Error(`Could not execute SQL command ${err}`);
         }
     }
+    // returns a specified product
     async show(id) {
         try {
             //@ts-ignore
@@ -29,9 +31,10 @@ class ProductsStore9 {
             return result.rows[0];
         }
         catch (err) {
-            throw new Error(`Could not find the book with ${id}. Error: ${err}`);
+            throw new Error(`Could not execute SQL command for product id ${id}. Error: ${err}`);
         }
     }
+    // create a new products
     async create(p9) {
         try {
             //@ts-ignore
@@ -42,7 +45,7 @@ class ProductsStore9 {
             return result.rows[0];
         }
         catch (err) {
-            throw new Error(`Could not add new product ${p9.name}. Error:${err}`);
+            throw new Error(`Could not execute SQL command for product name ${p9.name}. Error:${err}`);
         }
     }
 }

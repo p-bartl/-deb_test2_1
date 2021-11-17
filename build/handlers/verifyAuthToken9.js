@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 //import jwt from 'jsonwebtoken'
 var jwt = require('jsonwebtoken');
+// Token verification method
 //@ts-ignore
 const verifyAuthToken9 = (req, res, next) => {
     try {

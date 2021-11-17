@@ -2,10 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const product9_1 = require("../models/product9");
 const store = new product9_1.ProductsStore9();
+// returns all products
 const index = async (_req, res) => {
     const products = await store.index();
     res.json(products);
 };
+// returns a specified product
 const show = async (req, res) => {
     try {
         const getProduct = await store.show(req.params.id);
@@ -16,6 +18,7 @@ const show = async (req, res) => {
         res.json(err);
     }
 };
+// create a new products
 const create = async (req, res) => {
     const product = {
         name: req.body.name,

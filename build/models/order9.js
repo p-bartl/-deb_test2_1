@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderStore9 = void 0;
 const database_1 = __importDefault(require("../database"));
 class OrderStore9 {
+    // returns all orders
     async index() {
         try {
             const conn = await database_1.default.connect();
@@ -15,9 +16,10 @@ class OrderStore9 {
             return result.rows;
         }
         catch (err) {
-            throw new Error(`Not able to get orders ${err}`);
+            throw new Error(`Could not execute SQL command ${err}`);
         }
     }
+    // returns a specified order
     async show(id) {
         try {
             const conn = await database_1.default.connect();
@@ -28,9 +30,10 @@ class OrderStore9 {
             return result.rows[0];
         }
         catch (err) {
-            throw new Error(`Could not find order ${id}. Error ${err}`);
+            throw new Error(`Could not execute SQL command for order id ${id}. Error ${err}`);
         }
     }
+    // create a new order
     async create(o9) {
         try {
             const conn = await database_1.default.connect();
@@ -40,9 +43,10 @@ class OrderStore9 {
             return result.rows[0];
         }
         catch (err) {
-            throw new Error(`Could not create new order ${o9.id}. Error: ${err}`);
+            throw new Error(`Could not execute SQL command for order id ${o9.id}. Error: ${err}`);
         }
     }
+    // create a new product within an order (product itself must already exist)
     async addOrder(o9) {
         try {
             const sql = 'INSERT INTO order_products9(quantity,order_id,product_id) VALUES($1,$2,$3) RETURNING *';
@@ -55,7 +59,7 @@ class OrderStore9 {
             return order_products;
         }
         catch (err) {
-            throw new Error(`Could not add product ${o9.product_id} to order ${o9.order_id}: ${err}`);
+            throw new Error(`Could not execute SQL command for product id ${o9.product_id} to order ${o9.order_id}: ${err}`);
         }
     }
 }
